@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/main_item_bg"
+    android:paddingLeft="@dimen/common_dimen_10dp"
+    android:paddingRight="@dimen/common_dimen_20dp"
+    android:paddingBottom="@dimen/common_dimen_10dp"
+    android:paddingTop="@dimen/common_dimen_10dp"
+
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/iv_goods_icon"
+        android:layout_centerVertical="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/temp1" />
+
+    <RelativeLayout
+
+        android:layout_alignTop="@id/iv_goods_icon"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/common_dimen_15dp"
+        android:layout_toRightOf="@id/iv_goods_icon"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout">
+
+        <TextView
+            android:id="@+id/tv_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/common_item_title"
+            android:textSize="@dimen/common_font_26px"
+            android:layout_marginBottom="@dimen/common_dimen_5dp"
+            android:text="徐汇区虹桥路1号港汇广场"/>
+
+        <ImageView
+            android:id="@+id/iv_treasure_icon"
+            android:layout_width="38dp"
+            android:layout_below="@id/tv_home_title"
+            android:layout_height="38dp"
+            android:src="@drawable/treasure_item_icon" />
+
+        <TextView
+            android:id="@+id/tv_home_content"
+            android:layout_below="@id/tv_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_marginLeft="@dimen/common_dimen_5dp"
+            android:layout_toRightOf="@id/iv_treasure_icon"
+            android:textColor="@color/common_item_content"
+            android:layout_marginBottom="@dimen/common_dimen_5dp"
+            android:textSize="@dimen/common_font_22px"
+            android:text="西班牙IDEE蝴蝶饰品装饰项链女"/>
+
+        <TextView
+            android:id="@+id/tv_home_content_detail"
+            android:layout_below="@id/tv_home_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_treasure_icon"
+            android:layout_marginLeft="@dimen/common_dimen_5dp"
+            android:textColor="@color/common_item_little"
+            android:textSize="@dimen/common_font_20px"
+            android:maxLength="30"
+            android:layout_marginBottom="@dimen/common_dimen_5dp"
+            android:text="徐汇区虹桥路1号港汇恒隆广场1号徐汇区虹桥路1号港汇恒隆广场1号"
+            />
+
+
+    </RelativeLayout>
+
+     <LinearLayout
+         android:layout_alignBottom="@id/iv_goods_icon"
+         android:orientation="horizontal"
+         android:layout_toRightOf="@id/iv_goods_icon"
+         android:layout_width="match_parent"
+         android:layout_marginLeft="@dimen/common_dimen_15dp"
+         android:layout_height="wrap_content">
+
+
+         <RelativeLayout
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content">
+
+
+             <ImageView
+                 android:id="@+id/iv_collect"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/collect_p"
+                 android:layout_centerVertical="true"
+                 android:layout_marginRight="@dimen/common_dimen_5dp"
+                 />
+
+             <TextView
+                 android:id="@+id/tv_collect"
+                 android:layout_toRightOf="@id/iv_collect"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="365"
+                 android:layout_centerVertical="true"
+                 android:textSize="@dimen/common_font_18px"
+                 android:textColor="@color/common_blue"
+                 android:gravity="center_vertical"
+                  />
+
+
+         </RelativeLayout>
+
+         <RelativeLayout
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content">
+
+
+             <ImageView
+                 android:id="@+id/iv_praise"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/praise_n"
+                 android:layout_centerVertical="true"
+                 android:layout_marginRight="@dimen/common_dimen_5dp"
+                 />
+
+             <TextView
+                 android:id="@+id/tv_praise"
+                 android:layout_toRightOf="@id/iv_praise"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="1234"
+                 android:layout_centerVertical="true"
+                 android:textSize="@dimen/common_font_18px"
+                 android:textColor="@color/common_gray"
+                 android:gravity="center_vertical"
+                 />
+
+
+         </RelativeLayout>
+
+         <RelativeLayout
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content">
+
+             <ImageView
+                 android:id="@+id/iv_location"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/location_n"
+                 android:layout_centerVertical="true"
+                 android:layout_marginRight="@dimen/common_dimen_5dp"
+                 />
+
+             <TextView
+                 android:id="@+id/tv_location"
+                 android:layout_toRightOf="@id/iv_location"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="100m"
+                 android:singleLine="true"
+                 android:layout_centerVertical="true"
+                 android:textSize="@dimen/common_font_18px"
+                 android:textColor="@color/common_gray"
+                 android:gravity="center_vertical"
+                 />
+
+
+         </RelativeLayout>
+
+
+         <!--<TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="365"
+             android:textColor="@color/common_blue"
+             android:gravity="center_vertical"
+             android:drawablePadding="@dimen/common_dimen_5dp"
+             android:drawableLeft="@drawable/collect_p"
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1234"
+             android:gravity="center_vertical"
+             android:textColor="@color/common_gray"
+             android:drawablePadding="@dimen/common_dimen_5dp"
+             android:drawableLeft="@drawable/praise_n"
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="100m"
+             android:textColor="@color/common_gray"
+             android:gravity="center_vertical"
+             android:drawablePadding="@dimen/common_dimen_5dp"
+             android:drawableLeft="@drawable/location_n"
+             />-->
+
+
+
+     </LinearLayout>
+
+</RelativeLayout>

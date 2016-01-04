@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">哎呦喂</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="image">图片</string>
+
+    <string name="search">搜索</string>
+    <string name="load_error">加载失败,点击重试</string>
+
+    <string name="crop__saving">Saving picture…</string>
+    <string name="crop__wait">Please wait…</string>
+    <string name="crop__pick_error">No image sources available</string>
+    <string name="crop__done">DONE</string>
+    <string name="crop__cancel">CANCEL</string>
+
+
+    <string name="Login_title">登录</string>
+    <string name="Login_input_phone">请输入您的手机号码</string>
+    <string name="Login_input_password">密码为8-18位数字加字母，字符</string>
+    <string name="Login_input_again">请再次输入密码</string>
+    <string name="Login_input_pwd">请输入密码</string>
+    <string name="Login_input_nickname">请输入昵称</string>
+    <string name="Registered_title">注册</string>
+    <string name="Login_QQ">QQ登录</string>
+    <string name="Login_WB">微博登录</string>
+    <string name="Login_WX">微信登录</string>
+
+    <string name="forget_password">忘记密码</string>
+    <string name="modify_password">修改密码</string>
+    <string name="determine">确定</string>
+    <string name="Login_input_verification">请输入验证码</string>
+    <string name="obtain_verification">获取</string>
+    <string name="title_activity_search_activty">搜索</string>
+    <string name="title_activity_hot_mall">热门</string>
+    <string name="title_activity_select_city">国家</string>
+    <string name="evaluation_details">评价详情</string>
+    <string name="submit">提交</string>
+    <string name="write_evaluation">写点评</string>
+    <string name="coupon_receive">VIP卡详情</string>
+    <string name="my_coupon">我的VIP卡包</string>
+    <string name="good_detail">商品详情</string>
+    <string name="title_activity_market_info">商店详情</string>
+    <string name="auth_cancel">授权操作已取消</string>
+    <string name="auth_error">授权操作遇到错误，请阅读Logcat输出; \n 如微信登录，需要微信客户端</string>
+    <string name="auth_complete">授权成功，正在跳转登录操作…</string>
+    <string name="s_intelligent_sort">智能排序</string>
+    <string name="s_large_department_stores">大型百货</string>
+    <string name="s_hot_market">热门商家</string>
+    <string name="s_disappear">%1$s秒后自动消失</string>
+
+    <string name="s_mine">个人中心</string>
+    <!--P11_4我的通知-->
+    <string name="personal_center_my_inform_title">我的通知</string>
+
+    <!--P11_3我的宝藏-->
+    <string name="personal_center_my_storbhouse_title">我的宝藏</string>
+
+    <!--P11_5我的意见-->
+    <string name="personal_center_my_opinion_title">我的意见</string>
+    <string name="personal_center_my_opinion_button_text">提  交</string>
+
+    <!--P11_6邀请好友-->
+    <string name="personal_center_my_friend_title">邀请好友</string>
+
+    <!--P11_7我的信息-->
+    <string name="personal_center_my_info_title">我的信息</string>
+    <string name="update_nickname">修改昵称</string>
+    <string name="confirm">保  存</string>
+
+    <!--P11_2我的收藏-->
+    <string name="personal_center_my_collect_title">我的收藏</string>
+    <string name="s_my_collect_goods">收藏的商品</string>
+    <string name="s_my_collect_stores">收藏的商场</string>
+
+    <string name="search_hint">轻轻告诉我你想去的城市</string>
+    <string name="treasure_hint">想去的城市哪里有宝藏</string>
+    <string name="search_no_data_hint">亲，没有找到啊~再试试吧</string>
+    <string name="left_count">剩余数量</string>
+    <string name="treasure_total">宝藏总数</string>
+    <string name="treasure_detail">宝藏详情</string>
+    <string name="mine_info">我的信息</string>
+    <string name="personal_center_title">我的通知</string>
+    <string name="error_network">搜索失败,请检查网络连接！</string>
+    <string name="error_key">key验证无效！</string>
+    <string name="error_other">未知错误，请稍后重试!错误码为</string>
+    <string name="no_result">对不起，没有搜索到相关数据！</string>
+
+    <string name="s_japan">日本</string>
+    <string name="global_unknown_err">未知错误</string>
+</resources>

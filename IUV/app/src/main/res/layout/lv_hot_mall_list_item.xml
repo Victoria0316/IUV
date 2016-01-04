@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="?android:attr/actionBarSize"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="@dimen/common_dimen_10dp">
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/hot_mall_head"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:id="@+id/name"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/common_dimen_15dp"
+        android:layout_toRightOf="@id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aaaaaaaaaaaaa"
+        android:textSize="@dimen/common_font_28px"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/mark"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:text="bbbbb"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:textSize="@dimen/common_font_24px"
+        android:textColor="@color/gray"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignStart="@+id/name" />
+    <TextView
+        android:id="@+id/price"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥:1680.00"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:textSize="@dimen/common_font_26px"
+        android:textColor="@color/price_font_red"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignBottom="@id/pic"
+        />
+
+    <TextView
+        android:id="@+id/praise_text"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:layout_alignBottom="@id/pic"
+        android:layout_alignParentRight="true"
+        />
+
+    <ImageView
+        android:id="@+id/praise_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/praise_n"
+        android:layout_alignBottom="@id/pic"
+        android:layout_toLeftOf="@id/praise_text"
+        />
+
+    <TextView
+        android:id="@+id/collect_text"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:layout_alignBottom="@id/pic"
+        android:layout_toLeftOf="@id/praise_img"
+        android:layout_marginRight="@dimen/common_dimen_5dp"
+        />
+
+    <ImageView
+        android:id="@+id/collect_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/collect_n"
+        android:layout_alignBottom="@id/pic"
+        android:layout_toLeftOf="@id/collect_text"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingTop="@dimen/common_dimen_15dp">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_vip"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/common_dimen_10dp"
+        android:background="@drawable/vip_bg"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:background="@drawable/vip_logo"
+            android:layout_marginLeft="@dimen/common_dimen_5dp"
+            android:layout_width="38dp"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/common_dimen_2dp"
+            android:layout_height="38dp">
+
+
+            <bluemobi.iuv.view.CircleImageView
+                android:id="@+id/coupons_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/right_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/rl_vip"
+        android:layout_alignBottom="@+id/rl_vip"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/receive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即领用"
+            android:textSize="@dimen/common_font_24px"
+            android:textColor="@color/common_blue"
+            android:layout_marginRight="@dimen/common_dimen_10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/rl_vip"
+        android:layout_toLeftOf="@id/right_now"
+        android:layout_marginLeft="@dimen/common_dimen_10dp"
+        android:layout_marginRight="@dimen/common_dimen_10dp"
+        android:layout_alignTop="@+id/rl_vip"
+        android:layout_alignBottom="@+id/rl_vip"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIP卡信息内容"
+            android:textSize="@dimen/common_font_24px"
+            android:textColor="@color/common_gray_nick" />
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单满100可以使用一张订单满100可以使用一张订"
+            android:textSize="@dimen/common_font_24px"
+            android:textColor="@color/common_gray_text"
+            android:layout_marginTop="@dimen/common_dimen_5dp"/>
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_dimen_5dp"
+        android:background="@color/common_bg"
+        android:layout_below="@id/rl_vip"
+        android:layout_marginTop="@dimen/common_dimen_15dp"/>
+
+</RelativeLayout>

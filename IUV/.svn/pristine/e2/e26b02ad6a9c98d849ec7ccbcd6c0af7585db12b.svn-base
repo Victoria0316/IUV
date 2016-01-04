@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    android:layout_width="74dp"
+    android:layout_height="53dp">
+
+
+        <ImageView
+            android:id="@+id/rl_pic"
+            android:layout_width="match_parent"
+            android:background="@drawable/image"
+            android:scaleType="fitXY"
+            android:layout_height="match_parent" />
+
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:background="#aa717277"
+             android:layout_height="match_parent">
+
+
+             <TextView
+                 android:id="@+id/price"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:layout_alignParentRight="true"
+                 android:layout_marginBottom="6dp"
+                 android:layout_marginRight="6dp"
+                 android:layout_marginTop="4dp"
+                 android:text="￥50.00"
+                 android:textColor="@color/white"
+                 android:textSize="10sp" />
+
+             <TextView
+                 android:id="@+id/line"
+                 android:layout_width="match_parent"
+                 android:layout_height="0.5dp"
+                 android:layout_above="@id/price"
+                 android:layout_marginLeft="3dp"
+                 android:layout_marginRight="3dp"
+                 android:layout_marginTop="4dp"
+                 android:background="@color/line_transparent"
+                 android:paddingLeft="10dp"
+
+                 />
+
+             <TextView
+                 android:id="@+id/style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_above="@id/line"
+                 android:layout_alignLeft="@id/line"
+                 android:text="冬季风格"
+                 android:textColor="@color/white"
+                 android:textSize="10sp"
+
+                 />
+
+             <TextView
+                 android:id="@+id/name"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_above="@id/style"
+                 android:layout_alignLeft="@id/line"
+                 android:text="冬季套装"
+                 android:textColor="@color/white"
+                 android:textSize="10sp"
+
+                 />
+
+         </RelativeLayout>
+
+
+</FrameLayout>

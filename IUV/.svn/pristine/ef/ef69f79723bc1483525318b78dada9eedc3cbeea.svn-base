@@ -1,0 +1,219 @@
+package bluemobi.iuv.fragment;
+
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.bumptech.glide.Glide;
+
+import bluemobi.iuv.R;
+import bluemobi.iuv.activity.MainActivity;
+import bluemobi.iuv.annotation.ContentView;
+import bluemobi.iuv.app.IuwApplication;
+import bluemobi.iuv.eventbus.BaseEvent;
+import bluemobi.iuv.eventbus.CityEvent;
+import bluemobi.iuv.eventbus.CommentDetailEvent;
+import bluemobi.iuv.eventbus.TreasureEvent;
+import bluemobi.iuv.network.IuwHttpJsonRequest;
+import bluemobi.iuv.network.model.TruesureInfo;
+import bluemobi.iuv.network.request.GetTreasureInfoRequest;
+import bluemobi.iuv.network.request.GetVipListRequest;
+import bluemobi.iuv.network.request.ReceiveTreasureRequest;
+import bluemobi.iuv.network.response.ConfirmCodeResponse;
+import bluemobi.iuv.network.response.GetTreasureInfoResponse;
+import bluemobi.iuv.network.response.GetVipListResponse;
+import bluemobi.iuv.util.Constants;
+import bluemobi.iuv.util.SharedPreferencesUtil;
+import bluemobi.iuv.util.Utils;
+import bluemobi.iuv.util.WebUtils;
+import bluemobi.iuv.view.AspectImageView;
+import bluemobi.iuv.view.LoadingPage;
+import bluemobi.iuv.view.RatioImageView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
+
+/**
+ * 宝藏详情界面 P9
+ * Created by wangzhijun on 2015/8/7.
+ * 640 X 313
+ */
+@ContentView(R.layout.fragment_treasure_detail)
+public class TreasureDetailFragment extends BaseFragment {
+
+    @Bind(R.id.treasure_title)
+    protected TextView treasure_title;
+    @Bind(R.id.treasure_desc)
+    protected TextView treasure_desc;
+    @Bind(R.id.toReview)
+    protected TextView toReview;
+    @Bind(R.id.count)
+    protected TextView count;
+    @Bind(R.id.treasure_total)
+    protected TextView treasure_total;
+    @Bind(R.id.left_count)
+    protected TextView left_count;
+    private int imageHeight;
+    @Bind(R.id.receive)
+    protected TextView receive;
+    private AlertDialog dialog;
+
+    @Bind(R.id.img)
+    protected RatioImageView img;
+
+    private TruesureInfo data;
+
+    @Bind(R.id.market_name)
+    protected TextView market_name;
+
+    private  String treasureID;
+
+    public TreasureDetailFragment()
+    {
+        EventBus.getDefault().register(this);
+    }
+
+    public void onEventMainThread(BaseEvent baseEvent) {
+
+        if (baseEvent instanceof TreasureEvent)
+        {
+            TreasureEvent treasureEvent= (TreasureEvent) baseEvent;
+            treasureID = treasureEvent.getTreasureID();
+        }
+
+    }
+
+    @OnClick(R.id.receive)
+    public void receiver()
+    {
+
+
+        ReceiveTreasureRequest request = new ReceiveTreasureRequest(new Response.Listener<ConfirmCodeResponse>() {
+            @Override
+            public void onResponse(ConfirmCodeResponse response) {
+                Utils.closeDialog();
+                if (response != null && response.getStatus() ==0){
+                    minus();
+                }
+            }
+        }, (Response.ErrorListener) getActivity());
+
+        request.setUserId(IuwApplication.getInstance().getMyUserInfo().getUserId());
+        request.setPreciousId(data.getId());
+        String geoLat = SharedPreferencesUtil.getFromFileByDefault(mContext, "geoLat", Constants.DEFAULT_LATITUDE);
+        String geoLng = SharedPreferencesUtil.getFromFileByDefault(mContext, "geoLng", Constants.DEFAULT_LATITUDE);
+        request.setLatitude(geoLat);
+        request.setLongitude(geoLng);
+        Utils.showProgressDialog(getActivity());
+        WebUtils.doPost(request);
+    }
+    private  void minus(){
+        if(dialog == null){
+            dialog = new AlertDialog.Builder(mContext)
+                    .create();
+            View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_receive_success, null);
+            TextView tv_content = (TextView) view.findViewById(R.id.tv_content);
+            TextView tv_sure = (TextView) view.findViewById(R.id.tv_sure);
+            Window window = dialog.getWindow();
+            window.setGravity(Gravity.CENTER);  //此处可以设置dialog显示的位置
+            dialog.show();
+            dialog.setContentView(view);
+            tv_sure.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (dialog!=null)
+                    {
+                        dialog.dismiss();
+                    }
+                }
+            });
+        }else{
+            dialog.show();
+        }
+        left_count.setText(String.valueOf(Integer.valueOf(left_count.getText().toString()) - 1));
+
+    }
+
+    @Override
+    protected IuwHttpJsonRequest initRequest() {
+        GetTreasureInfoRequest request = new GetTreasureInfoRequest(new Response.Listener<GetTreasureInfoResponse>() {
+            @Override
+            public void onResponse(GetTreasureInfoResponse response) {
+                if (response != null && response.getStatus() ==0){
+                    data=response.getData();
+                    if (data==null)
+                    {
+                        return;
+                    }
+                    showData();
+                }
+            }
+        }, (Response.ErrorListener) getActivity());
+        request.setId(treasureID);
+        if (IuwApplication.getInstance().getMyUserInfo()!=null)
+        request.setUserId(IuwApplication.getInstance().getMyUserInfo().getUserId());
+        return request;
+    }
+
+    private  void showData(){
+
+        img.setRatio(2.0338f);
+        market_name.setText(data.getShopsName());
+        treasure_title.setText(data.getPreciousName());
+        treasure_desc.setText(data.getPreciousDescription());
+        String commentNum = data.getCommentNum()==null?"0":data.getCommentNum();
+        count.setText("("+commentNum+")");
+        treasure_total.setText(data.getIssuanceNum());
+        left_count.setText(data.getSurplusNum());
+        Glide.with(mContext).load(data.getPreciousImgPath()).placeholder(R.drawable.treasure_detail_defautl).into(img);
+    }
+    @OnClick(R.id.toReview)
+    public void clickComment()
+    {
+        CommentDetailEvent commentDetailEvent = new CommentDetailEvent();
+        commentDetailEvent.setProductID(treasureID);
+        commentDetailEvent.setSourceType(Constants.COMMENT_SOURCE_TYPE_TREASURE);
+        Utils.moveToFragment(CommentDetailsFragment.class, TreasureDetailFragment.this, "CommentDetailsFragment");
+        EventBus.getDefault().post(commentDetailEvent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((MainActivity) mContext).setHomeBarSytle(getResources().getString(R.string.treasure_detail), true);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+
+        super.onHiddenChanged(hidden);
+        if (((MainActivity) mContext).isHiddChange)
+        {
+            ((MainActivity) mContext).setHomeBarSytle(getResources().getString(R.string.treasure_detail), true);
+        }
+    }
+
+    @Override
+    protected void successViewCompleted(View successView) {
+        ButterKnife.bind(this, successView);
+        img.getLayoutParams().width = Utils.getDeviceWidth(getActivity());
+        img.getLayoutParams().height = imageHeight;
+
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        imageHeight = Utils.getDeviceWidth(getActivity()) * 313 / 640;
+    }
+
+
+}

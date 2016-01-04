@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_search_wrap"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_blue"
+    android:orientation="horizontal">
+
+
+    <bluemobi.iuv.view.CustomCountySpinnerSingle
+        android:id="@+id/custom_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="国家"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/common_dimen_10dp">
+
+    </bluemobi.iuv.view.CustomCountySpinnerSingle>
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@id/custom_spinner"
+        android:layout_weight="1"
+        android:background="@drawable/search_bar_bg">
+
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:singleLine="true"
+            android:layout_gravity="left|center_horizontal"
+            android:paddingLeft="@dimen/common_dimen_10dp"
+            android:hint="@string/search_hint"
+            android:textColorHint="@color/common_white"
+            android:textColor="@color/common_white"
+            android:textSize="@dimen/common_font_24px" />
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_search_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginLeft="@dimen/common_dimen_10dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/iv_search_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginLeft="@dimen/common_dimen_10dp"
+         />
+
+</LinearLayout>

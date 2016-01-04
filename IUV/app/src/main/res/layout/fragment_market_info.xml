@@ -1,0 +1,309 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:widget="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingTop="?android:attr/actionBarSize"
+    android:scrollbars="none">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/common_dimen_10dp"
+        tools:context="bluemobi.iuv.activity.MarketInfoActivity">
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/common_dimen_15dp"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:layout_marginTop="@dimen/common_dimen_20dp"
+            android:singleLine="true"
+            android:text="港汇商场"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_font_28px" />
+
+        <TextView
+            android:id="@+id/zan_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/name"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/common_dimen_5dp"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:singleLine="true"
+            android:text="1230"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_20px" />
+
+        <ImageView
+            android:id="@+id/iv_shop_praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/name"
+            android:layout_toLeftOf="@id/zan_num"
+            android:src="@drawable/zan_no" />
+
+        <ImageView
+            android:id="@+id/iv_shop_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/name"
+            android:layout_marginRight="@dimen/common_dimen_15dp"
+            android:layout_toLeftOf="@id/iv_shop_praise"
+            android:src="@drawable/soucang_no" />
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/name"
+            android:background="@color/gray_backgroup" />
+
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="117dp"
+            android:layout_height="114dp"
+            android:layout_below="@+id/view_1"
+            android:layout_marginBottom="@dimen/common_dimen_15dp"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:layout_marginRight="@dimen/common_dimen_15dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp" />
+
+        <TextView
+            android:id="@+id/tv_shop_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/vip"
+            android:layout_alignTop="@+id/pic"
+            android:layout_marginRight="@dimen/common_dimen_15dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:layout_toRightOf="@+id/pic"
+            android:text="服装就是艺术品，是穿在身上的心灵和态度服装就是艺术品，是穿在身上的心灵和态度"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_24px" />
+
+        <ImageView
+            android:id="@+id/vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pic"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:background="@drawable/vip_yes" />
+
+        <ImageView
+            android:id="@+id/iv_treasure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pic"
+            android:layout_marginRight="@dimen/common_dimen_15dp"
+            android:layout_toLeftOf="@+id/vip"
+            android:background="@drawable/baozang_yes" />
+
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/pic"
+            android:background="@color/gray_backgroup" />
+
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_2"
+            android:layout_marginBottom="@dimen/common_dimen_10dp"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:background="@drawable/loaction" />
+
+        <TextView
+            android:id="@+id/location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/location"
+            android:layout_marginLeft="@dimen/common_dimen_5dp"
+            android:layout_toRightOf="@+id/location"
+            android:singleLine="true"
+            android:text="虹桥路港汇广场587号10E座一号楼"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <View
+            android:id="@+id/view_3"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/location"
+            android:background="@color/gray_backgroup" />
+
+        <TextView
+            android:id="@+id/worktime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_3"
+            android:layout_marginLeft="@dimen/common_dimen_20dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:text="营业时间"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <TextView
+            android:id="@+id/worktime_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/worktime"
+            android:layout_below="@+id/worktime"
+            android:text="9:30-22:00"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <View
+            android:id="@+id/view_4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/worktime_text"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:background="@color/gray_backgroup" />
+
+        <TextView
+            android:id="@+id/wangzhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_4"
+            android:layout_marginLeft="@dimen/common_dimen_20dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:text="官方网站"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <TextView
+            android:id="@+id/net_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/wangzhan"
+            android:layout_below="@+id/wangzhan"
+            android:text="http://www.www.com"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <View
+            android:id="@+id/view_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/net_text"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:background="@color/gray_backgroup" />
+
+        <TextView
+            android:id="@+id/tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_5"
+            android:layout_marginLeft="@dimen/common_dimen_20dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:text="电话"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <TextView
+            android:id="@+id/tel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tel"
+            android:layout_below="@+id/tel"
+            android:text="+81338371010"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <View
+            android:id="@+id/view_6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tel_text"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:background="@color/gray_backgroup" />
+
+        <TextView
+            android:id="@+id/activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_6"
+            android:layout_marginLeft="@dimen/common_dimen_20dp"
+            android:layout_marginTop="@dimen/common_dimen_10dp"
+            android:text="促销活动"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <TextView
+            android:id="@+id/activity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/activity"
+            android:layout_below="@+id/activity"
+            android:text="满500送100XXXXXXXXXX"
+            android:textColor="@color/common_gray"
+            android:textSize="@dimen/common_font_26px" />
+
+        <LinearLayout
+            android:id="@+id/dianping_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/common_dimen_15dp"
+            android:layout_marginRight="@dimen/common_dimen_15dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_dimen_5dp">
+
+            <ImageView
+                android:id="@+id/dianping_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/dianping" />
+
+            <TextView
+                android:id="@+id/tv_comment_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_dimen_5dp"
+                android:text="点评"
+                android:textColor="@color/common_blue"
+                android:textSize="@dimen/common_font_26px" />
+
+            <TextView
+                android:id="@+id/tv_comment_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(2000)"
+                android:textColor="@color/common_gray"
+                android:textSize="@dimen/common_font_26px" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_look"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/location_text"
+            android:layout_gravity="right|bottom"
+            android:src="@drawable/ic_discuss" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,193 @@
+package bluemobi.iuv.fragment;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.TextView;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import java.util.ArrayList;
+
+import bluemobi.iuv.R;
+import bluemobi.iuv.activity.MainActivity;
+import bluemobi.iuv.adapter.CommonAdapter;
+import bluemobi.iuv.adapter.ViewHolder;
+import bluemobi.iuv.annotation.ContentView;
+import bluemobi.iuv.eventbus.BaseEvent;
+import bluemobi.iuv.eventbus.CountySpinnerBean;
+import bluemobi.iuv.eventbus.LargeDeptEvent;
+import bluemobi.iuv.network.model.CityInfo;
+import bluemobi.iuv.network.request.GetCitiesByProRequest;
+import bluemobi.iuv.network.response.GetCitiesByCondResponse;
+import bluemobi.iuv.util.Utils;
+import bluemobi.iuv.util.WebUtils;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
+
+/**
+ * 二级城市列表 by liufy
+ */
+@ContentView(R.layout.fragment_area)
+public class AreaSecondFragment extends BaseFragment {
+
+    @Bind(R.id.gridview)
+    protected GridView mGridView;
+    private CommonAdapter<CityInfo> commonAdapter = null;
+    private String titleName;
+    private String titleId;
+    private String divisionType;
+    private String divisionCode;
+
+    @Bind(R.id.area_type)
+    protected TextView area_type;
+
+    @Bind(R.id.tv_allCity)
+    protected TextView tv_allCity;
+
+
+    protected ArrayList<CityInfo> lists = new ArrayList<CityInfo>();
+
+
+    private boolean isFromTreasure = false;
+
+    public AreaSecondFragment() {
+        EventBus.getDefault().register(this);
+    }
+
+    public void onEventMainThread(BaseEvent baseEvent) {
+        if (baseEvent instanceof CountySpinnerBean) {
+            CountySpinnerBean mCountySpinnerBean = (CountySpinnerBean) baseEvent;
+            titleName = mCountySpinnerBean.getName();
+            titleId = mCountySpinnerBean.getId();
+            isFromTreasure = mCountySpinnerBean.isTreasure();
+            divisionType = mCountySpinnerBean.getDivisionType();
+            divisionCode = mCountySpinnerBean.getDivisionCode();
+
+        }
+
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((MainActivity) mContext).setHomeBarSytle(titleName, true);
+    }
+
+
+    @Override
+    protected void successViewCompleted(View successView) {
+        ButterKnife.bind(this, successView);
+        area_type.setText("区县");
+        getDataFromServer();
+    }
+
+
+    private void getDataFromServer() {
+        GetCitiesByProRequest request = new GetCitiesByProRequest
+                (
+                        new Response.Listener<GetCitiesByCondResponse>() {
+                            @Override
+                            public void onResponse(GetCitiesByCondResponse response) {
+                                Utils.closeDialog();
+                                if (response != null && response.getStatus() == 0) {
+                                    lists.clear();
+                                    lists.addAll(response.getData().getInfo());
+                                    showData();
+                                } else if (response != null && response.getStatus() == 2) {
+                                    lists.clear();
+                                    showData();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+
+                    }
+                });
+        request.setPid(titleId);
+        request.setHandleCustomErr(false);
+        WebUtils.doPost(request);
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+
+        isShowLoadPage = false;
+
+    }
+
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (((MainActivity) mContext).isHiddChange) {
+            ((MainActivity) mContext).setHomeBarSytle(titleName, true);
+        }
+    }
+
+    private void showData() {
+
+        CityInfo cityInfo = new CityInfo();
+        cityInfo.setDivisionName(titleName);
+        cityInfo.setAreaName(titleName);
+        cityInfo.setDivisionCode(divisionCode);
+        cityInfo.setId(titleId);
+        lists.add(0, cityInfo);
+        mGridView.setAdapter(commonAdapter = new CommonAdapter<CityInfo>(mContext, lists, R.layout.lv_search_item) {
+            @Override
+            public void convert(ViewHolder helper, CityInfo item) {
+                TextView tv_city =(TextView) helper.getView(R.id.tv_city);
+                tv_city.setText(item.getDivisionName());
+                if (helper.getPosition() == 0)
+                {
+                    tv_city.setText("全市");
+                    tv_city.setTextColor(getResources().getColor(R.color.white));
+                    tv_city.setBackgroundResource(R.drawable.city_blue);
+
+
+                } else
+                {
+                    tv_city.setTextColor(getResources().getColor(R.color.common_blue));
+                    tv_city.setBackgroundResource(R.drawable.city_white);
+
+                }
+            }
+        });
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (isFromTreasure) //宝藏页面跳转过来的
+                {
+
+                    Utils.moveToFragment(HomeTreasureFragment.class, AreaSecondFragment.this, "hometreasurefragment");
+                    LargeDeptEvent largeDeptEvent = new LargeDeptEvent();
+                    String strName = lists.get(position).getDivisionName();
+                    largeDeptEvent.setDivisionType(lists.get(position).getDivisionType());
+                    largeDeptEvent.setDivisionCode(lists.get(position).getDivisionCode());
+                    largeDeptEvent.setDivisionName(strName);
+                    EventBus.getDefault().post(largeDeptEvent);
+                } else {
+
+                    Utils.moveToFragment(DetailFragment.class, AreaSecondFragment.this, "detailFragment");
+                    LargeDeptEvent largeDeptEvent = new LargeDeptEvent();
+                    String strName = lists.get(position).getDivisionName();
+                    largeDeptEvent.setDivisionType(lists.get(position).getDivisionType());
+                    largeDeptEvent.setDivisionCode(lists.get(position).getDivisionCode());
+                    largeDeptEvent.setDivisionName(strName);
+                    EventBus.getDefault().post(largeDeptEvent);
+                }
+
+
+            }
+        });
+    }
+
+
+}

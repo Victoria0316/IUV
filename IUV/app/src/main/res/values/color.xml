@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="black_light">#252827</color>
+
+    <color name="crop__button_bar">#f3f3f3</color>
+    <color name="crop__button_text">#666666</color>
+    <color name="crop__selector_pressed">#1a000000</color>
+    <color name="crop__selector_focused">#77000000</color>
+
+    <!-- 公共 灰线-->
+    <color name="common_gray_line">#e9ecec</color>
+
+
+    <!--公共字体颜色 common  -->
+    <color name="common_bg">#e8ecf0</color>
+    <color name="common_title_color">#37bbff</color>
+    <color name="common_bottom_bg">#fafafa</color>
+    <color name="common_white">#ffffff</color>
+    <color name="common_gray">#a6a6a6</color>
+    <color name="common_black">#323232</color>
+    <color name="common_blue">#38b9fa</color>
+    <color name="common_red">#de6364</color>
+    <color name="common_bottom_title_color">#333333</color>
+    <color name="gray">#b3b3b3</color>
+    <color name="gray_backgroup">#e8ecf0</color>
+    <color name="common_transparent">#00000000</color>
+    <color name="price_font_red">#e48181</color>
+    <color name="gray_line">#515e69</color>
+    <color name="common_gray_nick">#888888</color>
+    <color name="common_gray_text">#a0a0a0</color>
+    <color name="common_page_bg">#e8ebf0</color>
+    <color name="line">#697683</color>
+    <color name="line_transparent">#aa697683</color>
+
+    <!--item字体颜色-->
+    <color name="common_item_title">#333333</color>
+    <color name="common_item_content">#565e63</color>
+    <color name="common_item_little">#969696</color>
+    <color name="spinner_lv_content">#6b6f7c</color>
+
+
+
+    <color name="dialog_bg">#f8f8f8</color>
+    <color name="dialog_line">#ebeaef</color>
+    <color name="btn_cancel">#828994</color>
+    <color name="dialog_btn_press">#EAEAEA</color>
+    <color name="transparent">#00000000</color>
+    <color name="btntextcolor">#ff1E90FF</color><!--dialog中按钮字体颜色 -->
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--P11_4我的通知-->
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="@dimen/common_dimen_10dp"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/inform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/my_inform_tongzhi" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/inform"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="2015年7月18日为庆祝商场成立八周年全场7折起。欢迎大家前来购买"
+        android:textSize="@dimen/common_font_26px" />
+
+    <TextView
+        android:id="@+id/market_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/content"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:text="徐汇区港汇商场"
+        android:textColor="@color/common_blue"
+        android:textSize="@dimen/common_font_22px" />
+</RelativeLayout>
+

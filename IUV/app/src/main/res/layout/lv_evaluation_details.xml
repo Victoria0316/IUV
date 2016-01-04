@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/common_dimen_10dp"
+        android:paddingRight="@dimen/common_dimen_10dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/common_dimen_10dp"
+            android:layout_marginTop="@dimen/common_dimen_15dp"
+            android:text="郭晓晓"
+            android:textColor="@color/common_gray_nick"
+            android:textSize="@dimen/common_font_28px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/tv_comment_desp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_dimen_15dp"
+            android:lineSpacingExtra="@dimen/common_dimen_5dp"
+            android:text="质量很好，我很喜欢！质量很好，我很喜欢！质量很好，我很喜欢！质量很好，我很喜欢！质量很好，我很喜欢！质量很好，我很喜欢！质量很好，我很喜欢！质量很好，我很喜欢！"
+            android:textColor="@color/common_gray_text"
+            android:textSize="@dimen/common_font_24px" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/common_dimen_10dp"
+            android:orientation="horizontal">
+
+            <bluemobi.iuv.view.RatioImageView
+                android:id="@+id/iv_pic1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/treasure_detail_defautl"  />
+
+            <bluemobi.iuv.view.RatioImageView
+                android:id="@+id/iv_pic2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_dimen_20dp"
+                android:layout_marginRight="@dimen/common_dimen_20dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/treasure_detail_defautl" />
+
+            <bluemobi.iuv.view.RatioImageView
+                android:id="@+id/iv_pic3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/treasure_detail_defautl"  />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_dimen_10dp"
+        android:background="@color/common_bg" />
+</LinearLayout>

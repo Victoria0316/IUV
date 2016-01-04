@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?android:attr/actionBarSize">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/market_name"
+                style="@style/common_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/common_font_28px"
+                android:text="港汇商场" />
+
+            <TextView
+                android:id="@+id/receive"
+                style="@style/common_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_margin_big"
+                android:textColor="@color/common_gray"
+                android:textSize="@dimen/common_font_22px"
+                android:drawableLeft="@drawable/baozang_yes"
+                android:text="领取宝藏" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
+
+        <bluemobi.iuv.view.RatioImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:background="@drawable/treasure_detail_defautl" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/common_margin_big">
+
+            <TextView
+                android:id="@+id/treasure_title"
+                style="@style/common_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="白色V"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_font_30px" />
+
+            <TextView
+                android:id="@+id/treasure_desc"
+                style="@style/common_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/treasure_title"
+                android:layout_marginTop="@dimen/common_margin_little"
+                android:text="ddd"
+                android:textColor="#666666"
+                android:textSize="@dimen/common_font_22px" />
+
+            <TextView
+                android:id="@+id/count"
+                style="@style/common_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/treasure_desc"
+                android:layout_marginTop="@dimen/common_margin_big"
+                android:text="(2000)"
+                android:textSize="@dimen/common_font_24px"
+                android:textColor="@color/common_gray" />
+
+            <TextView
+                android:id="@+id/toReview"
+                style="@style/common_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/treasure_desc"
+                android:layout_marginRight="@dimen/common_margin_little"
+                android:layout_marginTop="@dimen/common_margin_big"
+                android:layout_toLeftOf="@id/count"
+                android:drawableLeft="@drawable/edit_28"
+                android:text="点评"
+                android:textSize="@dimen/common_font_24px"
+                android:textColor="@color/common_blue" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_little">
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    style="@style/common_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/treasure_total"
+
+                    />
+
+                <TextView
+                    android:id="@+id/treasure_total"
+                    style="@style/common_text"
+                    android:layout_marginTop="@dimen/common_margin"
+                    android:text="1230"
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/common_font_40px" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/common_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/left_count"
+
+                    />
+
+                <TextView
+                    android:id="@+id/left_count"
+                    style="@style/common_text"
+                    android:layout_marginTop="@dimen/common_margin"
+                    android:text="1230"
+                    android:textColor="@color/common_blue"
+                    android:textSize="@dimen/common_font_40px" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

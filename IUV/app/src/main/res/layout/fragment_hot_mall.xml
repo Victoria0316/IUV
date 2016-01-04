@@ -1,0 +1,247 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_backgroup"
+    android:paddingTop="?android:attr/actionBarSize">
+
+
+    <RelativeLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:background="@color/white">
+
+        <bluemobi.iuv.view.CircleImageView
+            android:id="@+id/pic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/pic" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/pic"
+            android:text="世纪公园港汇广场"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_font_26px" />
+
+        <ImageView
+            android:id="@+id/loaction_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name"
+            android:layout_below="@id/name"
+            android:background="@drawable/loaction" />
+
+        <TextView
+            android:id="@+id/location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/loaction_imageview"
+            android:ellipsize="end"
+            android:maxEms="20"
+            android:singleLine="true"
+            android:text="虹桥路港慧广场587号10B座一号楼"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_font_20px" />
+
+        <ImageView
+            android:id="@+id/list_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:background="@drawable/list_sort" />
+
+        <TextView
+            android:id="@+id/good_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/list_sort"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_dimen_5dp"
+            android:layout_toLeftOf="@id/list_sort"
+            android:gravity="bottom"
+            android:text="1230"
+            android:textSize="@dimen/common_font_26px" />
+
+        <ImageView
+            android:id="@+id/good"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_dimen_5dp"
+            android:layout_toLeftOf="@id/good_num"
+            android:src="@drawable/zan_no" />
+
+        <ImageView
+            android:id="@+id/shoucang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_dimen_15dp"
+            android:layout_toLeftOf="@id/good"
+            android:src="@drawable/soucang_no" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/hot"
+            android:layout_width="match_parent"
+            android:padding="@dimen/common_dimen_10dp"
+            android:layout_height="wrap_content">
+
+            <bluemobi.iuv.view.RatioImageView
+                android:id="@+id/hot_iamge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/common_dimen_10dp"
+                android:src="@drawable/hot" />
+
+            <LinearLayout
+                android:id="@+id/left_right_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hot_iamge"
+                android:layout_marginLeft="@dimen/common_dimen_10dp"
+                android:layout_marginRight="@dimen/common_dimen_10dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/left_image_lay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/common_dimen_10dp"
+                    android:layout_weight="1">
+
+                    <bluemobi.iuv.view.RatioImageView
+                        android:id="@+id/left_pic"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/left" />
+
+                    <TextView
+                        android:id="@+id/left_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="@dimen/common_dimen_10dp"
+                        android:layout_marginRight="17dp"
+                        android:singleLine="true"
+                        android:text="¥3420.00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_font_26px" />
+
+                    <View
+                        android:id="@+id/left_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_above="@+id/left_price"
+                        android:layout_marginBottom="@dimen/common_dimen_10dp"
+                        android:layout_marginLeft="@dimen/common_dimen_10dp"
+                        android:layout_marginRight="@dimen/common_dimen_10dp"
+                        android:background="@color/gray_line" />
+
+                    <TextView
+                        android:id="@+id/left_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/left_view"
+                        android:layout_marginBottom="@dimen/common_dimen_10dp"
+                        android:layout_marginLeft="@dimen/common_dimen_10dp"
+                        android:layout_marginRight="@dimen/common_dimen_10dp"
+                        android:text="SGE欧美高端首饰奥地利水晶项链"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_font_28px" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/right_image_lay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <bluemobi.iuv.view.RatioImageView
+                        android:id="@+id/right_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/right" />
+
+                    <TextView
+                        android:id="@+id/right_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="@dimen/common_dimen_10dp"
+                        android:layout_marginRight="17dp"
+                        android:singleLine="true"
+                        android:text="¥3060.00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_font_26px" />
+
+                    <View
+                        android:id="@+id/right_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_above="@+id/right_price"
+                        android:layout_marginBottom="@dimen/common_dimen_10dp"
+                        android:layout_marginLeft="@dimen/common_dimen_10dp"
+                        android:layout_marginRight="@dimen/common_dimen_10dp"
+                        android:background="@color/gray_line" />
+
+                    <TextView
+                        android:id="@+id/right_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/right_view"
+                        android:layout_marginBottom="@dimen/common_dimen_10dp"
+                        android:layout_marginLeft="@dimen/common_dimen_10dp"
+                        android:layout_marginRight="@dimen/common_dimen_10dp"
+                        android:text="法国IDee蝴蝶饰品装饰项链女 水晶吊坠"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_font_28px" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <bluemobi.iuv.view.ScorllListView
+                android:id="@+id/plv_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/left_right_lay"
+                android:layout_margin="@dimen/common_dimen_10dp"
+                android:background="@color/white"
+                android:cacheColorHint="@android:color/white"
+                android:divider="@null"
+                android:dividerHeight="@dimen/common_dimen_10dp"
+                android:fadingEdge="none"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

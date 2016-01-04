@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/dialog_pick_padding_lr"
+    android:paddingRight="@dimen/dialog_pick_padding_lr"
+    android:paddingTop="@dimen/dialog_pick_padding_tb"
+    android:paddingBottom="@dimen/dialog_pick_padding_tb"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        style="@style/common_text"
+        android:layout_height="@dimen/dialog_pick_item_height"
+        android:background="@drawable/border_btn"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="拍照"
+        android:id="@+id/camera"
+        />
+
+
+    <TextView
+        android:id="@+id/gallary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_pick_item_height"
+        android:background="@drawable/border_btn"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="相机"
+        android:layout_marginTop="@dimen/common_margin"
+        />
+
+
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_pick_item_height"
+        android:background="@drawable/border_btn_cancel"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/dialog_pick_margin"
+
+        android:text="取消" />
+
+</LinearLayout>

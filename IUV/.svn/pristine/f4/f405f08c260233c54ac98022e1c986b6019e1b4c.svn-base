@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@drawable/lv_item_with_line_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <!-- 设置子控件可以获取自己的区域的焦点, 但不可以抢占父类其他区域的焦点 -->
+    <!-- android:descendantFocusability="blocksDescendants" -->
+
+
+    <TextView
+        android:id="@+id/tv_number_item"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:textColor="@color/spinner_lv_content"
+        android:singleLine="true"
+        android:textSize="@dimen/common_font_24px" />
+
+
+</LinearLayout>

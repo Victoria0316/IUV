@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical"
+    android:paddingTop="?android:attr/actionBarSize">
+
+
+    <HorizontalScrollView
+        android:id="@+id/hs_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/common_blue"
+        android:scrollbars="none"
+        android:paddingLeft="@dimen/common_dimen_10dp"
+        android:paddingRight="@dimen/common_dimen_10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/ll_wrap_cusbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/common_blue"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_dimen_10dp"
+        android:paddingRight="@dimen/common_dimen_10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_large_stores"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/tv_large_stores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/tab_selected"
+                android:gravity="center"
+                android:text="@string/s_large_department_stores"
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/common_font_28px" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_hot_market"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+
+            <bluemobi.iuv.view.CustomSpinnerSingle
+                android:id="@+id/csm_hot_market_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_dimen_10dp"
+                android:gravity="center_horizontal"
+                android:paddingLeft="@dimen/common_dimen_15dp"
+                android:paddingRight="@dimen/common_dimen_5dp"
+                android:text="@string/s_hot_market">
+
+            </bluemobi.iuv.view.CustomSpinnerSingle>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_intelligent_sort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+
+            <bluemobi.iuv.view.TextViewWithPopWindow
+                android:id="@+id/tv_intelligent_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/intelligent_sort_icon"
+                android:drawablePadding="@dimen/common_dimen_5dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/common_dimen_5dp"
+                android:paddingRight="@dimen/common_dimen_5dp"
+                android:text="@string/s_intelligent_sort"
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/common_font_28px" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_tab"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/common_dimen_10dp"
+        android:paddingRight="@dimen/common_dimen_10dp"></android.support.v4.view.ViewPager>
+
+</LinearLayout>

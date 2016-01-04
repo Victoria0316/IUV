@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="cropImageStyle" format="reference" />
+
+    <declare-styleable name="CropImageView">
+        <attr name="highlightColor" format="reference|color" />
+        <attr name="showThirds" format="boolean" />
+        <attr name="showCircle" format="boolean" />
+        <attr name="showHandles">
+            <enum name="changing" value="0" />
+            <enum name="always" value="1" />
+            <enum name="never" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+    <!--下拉选择框 自定义属性 -->
+    <declare-styleable name="SpinnerText">
+        <attr name="android:text" />
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:hint" />
+        <attr name="android:background" />
+    </declare-styleable>
+
+
+    <!--油品类型选择 -->
+    <declare-styleable name="OilCheck">
+        <attr name="lefttext" format="string" />
+        <attr name="righttext" format="string" />
+        <attr name="defaultbackground" format="reference" />
+        <attr name="defaulttextsize" format="dimension" />
+    </declare-styleable>
+
+
+    <!--TextView Group -->
+    <declare-styleable name="TextViewGroup">
+        <attr name="leftText" format="string" />
+        <attr name="rightText" format="string" />
+        <attr name="leftTextColor" format="color" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="defaultBackground" format="reference|color" />
+        <attr name="leftTextSize" format="dimension" />
+        <attr name="rightTextSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RatioLayout">
+        <attr name="ratio" format="float" />
+    </declare-styleable>
+    <declare-styleable name="GasText">
+        <attr name="text" format="string" />
+        <attr name="gasStyle" format="integer" />
+    </declare-styleable>
+
+    <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+    <!-- Defines the custom XML attributes supported for a SwitchDotView -->
+    <declare-styleable name="SwitchDotView">
+        <attr name="selected" format="reference" />
+        <attr name="unselected" format="reference" />
+    </declare-styleable>
+
+    <!-- 圆型图片 -->
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+    </declare-styleable>
+
+
+</resources>

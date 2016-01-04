@@ -1,0 +1,328 @@
+package bluemobi.iuv.activity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+
+import bluemobi.iuv.R;
+import bluemobi.iuv.annotation.ContentView;
+import bluemobi.iuv.app.IuwApplication;
+import bluemobi.iuv.app.TitleBarManager;
+import bluemobi.iuv.base.BaseActivity;
+import bluemobi.iuv.base.utils.Logger;
+import bluemobi.iuv.network.request.CheckThirdInfoRequest;
+import bluemobi.iuv.network.request.LoginRequest;
+import bluemobi.iuv.network.response.LoginResponse;
+import bluemobi.iuv.util.StringUtils;
+import bluemobi.iuv.util.Utils;
+import bluemobi.iuv.util.WebUtils;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
+
+/**
+ * Created by gaoyn on 2015/8/4.
+ * p5 登录
+ */
+@ContentView(R.layout.activity_login)
+public class LoginActivity extends BaseActivity implements View.OnClickListener, PlatformActionListener {
+
+    private static final int MSG_AUTH_CANCEL = 2;
+    private static final int MSG_AUTH_ERROR = 3;
+    private static final int MSG_AUTH_COMPLETE = 4;
+
+    @Bind(R.id.tv_modify_pwd)
+    TextView tv_modify_pwd;
+
+    @Bind(R.id.tv_forgot_pwd)
+    TextView tv_forgot_pwd;
+
+    @Bind(R.id.Login)
+    TextView Login;
+
+    @Bind(R.id.Registered)
+    TextView Registered;
+
+    @Bind(R.id.phone)
+    EditText phone;
+
+    @Bind(R.id.password)
+    EditText password;
+
+    @Bind(R.id.iv_WB)
+    ImageView iv_WB;
+
+    @Bind(R.id.iv_QQ)
+    ImageView iv_QQ;
+
+    @Bind(R.id.iv_WX)
+    ImageView iv_WX;
+
+    private  MyHandler handler;
+
+    @Override
+    protected void initBase() {
+        TitleBarManager titleBarManager = new TitleBarManager();
+        titleBarManager.init(LoginActivity.this, getSupportActionBar());
+        titleBarManager.showCommonTitleBar(R.string.Login_title, R.drawable.common_title_left, true);
+        showLoadingPage(false);
+        ShareSDK.initSDK(this);
+
+    }
+
+    @Override
+    protected void successViewCompleted(View successView) {
+        ButterKnife.bind(this, successView);
+        tv_modify_pwd.setOnClickListener(this);
+        tv_forgot_pwd.setOnClickListener(this);
+        Login.setOnClickListener(this);
+        Registered.setOnClickListener(this);
+        handler = new MyHandler(this);
+
+    }
+
+
+    @OnClick(R.id.iv_WB)
+    protected void WBLogin() {
+        Utils.showProgressDialog(mContext);
+        Platform sina = ShareSDK.getPlatform(SinaWeibo.NAME);
+        authorize(sina);
+    }
+
+
+    @OnClick(R.id.iv_WX)
+    protected void WXLogin() {
+        Platform wx = ShareSDK.getPlatform(Wechat.NAME);
+        authorize(wx);
+    }
+
+    @OnClick(R.id.iv_QQ)
+    protected void QQLogin() {
+        Platform qq = ShareSDK.getPlatform(QQ.NAME);
+        authorize(qq);
+    }
+
+    private void authorize(Platform plat) {
+
+        if (plat == null) {
+            return;
+        }
+        plat.setPlatformActionListener(this);
+        plat.SSOSetting(true);
+        plat.showUser(null);
+    }
+
+    @Override
+    public void clickBarleft() {
+        return;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_modify_pwd:
+                password.setText("");
+                phone.setText("");
+                Utils.moveTo(this, ModifyPasswordActivity.class);
+                break;
+            case R.id.tv_forgot_pwd:
+                password.setText("");
+                phone.setText("");
+                Utils.moveTo(this, ForgetPasswordActivity.class);
+                break;
+            case R.id.Login:
+                phone.setText("15142007520");
+                password.setText("123123123");
+                if (checkLogin()) {
+                    LoginRequest request = new LoginRequest(
+                            new Response.Listener<LoginResponse>() {
+                                @Override
+                                public void onResponse(LoginResponse response) {
+                                    Utils.closeDialog();
+                                    if (response != null && response.getStatus() == 0) {
+                                        IuwApplication.getInstance().setMyUserInfo(response.getData());
+                                        Utils.moveTo(LoginActivity.this, MainActivity.class);
+                                        finish();
+                                    }
+                                }
+                            }, this);
+                    request.setPassword(password.getText().toString());
+                    request.setUserName(phone.getText().toString());
+                    Utils.showProgressDialog(LoginActivity.this);
+                    WebUtils.doPost(request);
+                }
+                break;
+            case R.id.Registered:
+                Utils.moveTo(this, RegisteredActivity.class);
+                break;
+        }
+    }
+
+    private boolean checkLogin() {
+        if (StringUtils.isEmpty(phone.getText().toString())) {
+            Toast.makeText(this, "手机号不能为空", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!Utils.checkPhoneNum(phone.getText().toString())) {
+            Toast.makeText(this, "手机号不合法", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (StringUtils.isEmpty(password.getText().toString())) {
+            Toast.makeText(this, "密码不能为空", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (password.getText().toString().length() < 8
+                || password.getText().toString().length() > 18) {
+            Toast.makeText(this, "密码长度为8-18", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+
+    @Override
+    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+
+        if (i == Platform.ACTION_USER_INFOR) {
+            Message msg = new Message();
+            msg.what = MSG_AUTH_COMPLETE;
+            msg.obj = new Object[]{platform.getName(), hashMap};
+            handler.sendMessage(msg);
+        }
+    }
+
+    @Override
+    public void onError(Platform platform, int i, Throwable throwable) {
+        if (i == Platform.ACTION_USER_INFOR) {
+            handler.sendEmptyMessage(MSG_AUTH_ERROR);
+        }
+        throwable.printStackTrace();
+    }
+
+    @Override
+    public void onCancel(Platform platform, int i) {
+        if (i == Platform.ACTION_USER_INFOR) {
+            handler.sendEmptyMessage(MSG_AUTH_CANCEL);
+        }
+    }
+
+    static class MyHandler extends Handler
+    {
+        WeakReference<Activity> mActivityReference;
+        MyHandler(Activity activity) {
+            mActivityReference= new WeakReference<Activity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG_AUTH_CANCEL:
+
+                    //取消授权
+                    Toast.makeText(mActivityReference.get(), R.string.auth_cancel, Toast.LENGTH_SHORT).show();
+
+                    break;
+                case MSG_AUTH_ERROR:
+                    //授权失败
+                    Toast.makeText(mActivityReference.get(), R.string.auth_error, Toast.LENGTH_SHORT).show();
+
+                    break;
+                case MSG_AUTH_COMPLETE:
+                    //授权成功
+                    Utils.showProgressDialog(mActivityReference.get());
+                    Toast.makeText(mActivityReference.get(), R.string.auth_complete, Toast.LENGTH_SHORT).show();
+                    Object[] objs = (Object[]) msg.obj;
+                    String platform = (String) objs[0];
+                    String customPlatform = "";
+                    if (SinaWeibo.NAME.equals(platform)) {
+                        customPlatform = "weibo";
+                    } else if (Wechat.NAME.equals(platform)) {
+                        customPlatform = "wx";
+                    } else if (QQ.NAME.equals(platform)) {
+                        customPlatform = "qq";
+
+                    }
+
+                    HashMap<String, Object> res = (HashMap<String, Object>) objs[1];
+
+                    checkThirdInfo(res.get("name")+"", customPlatform,mActivityReference.get());
+
+
+                    break;
+            }
+        }
+    }
+
+
+
+    private static void checkThirdInfo(final String name, final String customPlatform, final Activity activity)
+    {
+
+        CheckThirdInfoRequest request = new CheckThirdInfoRequest(
+                new Response.Listener<LoginResponse>() {
+                    @Override
+                    public void onResponse(LoginResponse response) {
+                        Utils.closeDialog();
+                        if (response != null && response.getStatus() == 0)
+                        {
+                            IuwApplication.getInstance().setMyUserInfo(response.getData());
+                            Utils.moveTo(activity,MainActivity.class);
+
+                        }
+                        else if (response != null && response.getStatus() == 3)
+                        {
+                            Intent intent = new Intent(activity,ThirdRegisteredActivity.class);
+                            intent.putExtra("CUSTOM_PLATFORM",customPlatform);
+                            intent.putExtra("THIRD_NAME",name);
+                            activity.startActivity(intent);
+
+                        }else if (response != null && response.getStatus() == 4)
+                        {
+                            String id = response.getData().getId();
+                            Intent intent = new Intent(activity, ThirdPwdActivity.class);
+                            intent.putExtra("ID_NEED_PWD", id);
+                            activity.startActivity(intent);
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+
+            }
+        });
+        request.setType(customPlatform);
+        request.setUserName(name);
+        request.setHandleCustomErr(false);
+
+        WebUtils.doPost(request);
+
+    }
+
+
+
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- P11_2我的收藏 商品-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/common_white"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/collect_goods" />
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/head"
+            android:singleLine="true"
+            android:text="白色V领蕾丝拼接长裙"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/goods_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goods_name"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/head"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:text="服装就是艺术品，是穿在身上" />
+
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goods_info"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/head"
+            android:textSize="15dp"
+            android:textColor="#ea9f9d"
+            android:layout_marginBottom="12dp"
+            android:text="￥1680.00" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

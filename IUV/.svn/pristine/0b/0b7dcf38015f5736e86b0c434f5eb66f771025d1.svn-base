@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_bg">
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/common_bottom_bg"
+        android:padding="@dimen/common_dimen_5dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/iv_home"
+                style="@style/bottom_imageview"
+                android:src="@drawable/home_page_n" />
+
+            <TextView
+                android:id="@+id/tv_home"
+                style="@style/bottom_text"
+                android:layout_below="@id/iv_home"
+                android:text="首页"
+
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_treasure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/iv_treasure"
+                style="@style/bottom_imageview"
+                android:src="@drawable/home_treasure_n" />
+
+            <TextView
+                android:id="@+id/tv_treasure"
+                style="@style/bottom_text"
+                android:layout_below="@id/iv_treasure"
+                android:text="宝藏"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/iv_search"
+                style="@style/bottom_imageview"
+                android:src="@drawable/home_search_n" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                style="@style/bottom_text"
+                android:layout_below="@id/iv_search"
+                android:text="搜索"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/iv_mine"
+                style="@style/bottom_imageview"
+                android:src="@drawable/home_mine_n" />
+
+            <TextView
+                android:id="@+id/tv_mine"
+                style="@style/bottom_text"
+                android:layout_below="@id/iv_mine"
+                android:text="我的"
+
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

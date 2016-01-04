@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:switchdot="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:paddingTop="?android:attr/actionBarSize">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_height="match_parent">
+
+            <bluemobi.iuv.view.RatioLayout
+                android:id="@+id/fl_viewpaper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <bluemobi.iuv.view.AutoScrollViewPager
+                    android:id="@+id/auto_viewpaper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <bluemobi.iuv.view.SwitchDotView
+                        android:id="@+id/swicth_dots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        switchdot:selected = "@drawable/switch_select"
+                        switchdot:unselected = "@drawable/switch_unselect"
+                        android:orientation="horizontal" />
+                </LinearLayout>
+            </bluemobi.iuv.view.RatioLayout>
+
+            <LinearLayout
+                android:layout_below="@id/fl_viewpaper"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/common_dimen_10dp"
+                android:orientation="horizontal"
+                android:id="@+id/ll_county"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_japan"
+                    android:layout_width="0dp"
+                    android:src="@drawable/japan"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/iv_europe"
+                    android:layout_width="0dp"
+                    android:src="@drawable/europe"
+                    android:layout_marginRight="@dimen/common_dimen_10dp"
+                    android:layout_marginLeft="@dimen/common_dimen_10dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+
+                <ImageView
+                    android:id="@+id/iv_australia"
+                    android:layout_width="0dp"
+                    android:src="@drawable/australia"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <bluemobi.iuv.view.CustomListView
+                android:id="@+id/lv_treasure"
+                android:layout_below="@id/ll_county"
+                android:layout_marginLeft="@dimen/common_dimen_10dp"
+                android:layout_marginRight="@dimen/common_dimen_10dp"
+                android:layout_width="match_parent"
+                android:dividerHeight="@dimen/common_dimen_10dp"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="@android:color/white"
+                android:divider="@drawable/line"
+                android:fadingEdge="none"
+                android:listSelector="@android:color/transparent"
+                android:layout_marginBottom="@dimen/common_dimen_10dp"
+                android:scrollbars="none">
+            </bluemobi.iuv.view.CustomListView>
+
+
+     </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

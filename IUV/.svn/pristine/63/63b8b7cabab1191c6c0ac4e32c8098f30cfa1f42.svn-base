@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="iuv 1.0"
+    package="bluemobi.iuv">
+
+    <!--地图-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <application
+        android:name=".app.IuwApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <!-- p5 登录 -->
+<!--        <meta-data
+            android:name="com.amap.lbsapi.API_KEY"
+            android:value="223b0d6750fb12580c7091b9c53f621e" />-->
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="4eadd5d4d99bc44c7b74b32655f848d6"/>
+        <activity android:name=".base.crop.CropImageActivity"></activity>
+        <!--p5 登录 -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name">
+
+
+        </activity>
+        <!-- p5-1 忘记密码 -->
+        <activity
+            android:name=".activity.ForgetPasswordActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <!-- p5-2 修改密码 -->
+        <activity
+            android:name=".activity.ModifyPasswordActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <!-- p6 注册 -->
+        <activity
+            android:name=".activity.RegisteredActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".activity.ThirdRegisteredActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".activity.ThirdPwdActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
+        <activity
+            android:name=".activity.AppStartActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:name=".activity.LauncherActivity"
+            android:screenOrientation="portrait" />
+        <!-- P11_4我的通知 个人中心 -->
+
+        <activity
+            android:name=".activity.MapInfoActicity"
+            android:screenOrientation="portrait" >
+
+    </activity>
+
+
+        <activity
+            android:name=".activity.MapInfoRouteActicity"
+            android:screenOrientation="portrait" >
+
+        </activity>
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <service android:name=".service.UpdateService" />
+    </application>
+
+</manifest>

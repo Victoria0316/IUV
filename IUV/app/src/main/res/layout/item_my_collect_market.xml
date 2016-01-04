@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- P11_2我的收藏 商场-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@color/common_white"
+    android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/common_dimen_10dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/head"
+            android:layout_width="66dp"
+            android:layout_height="64dp"
+             android:scaleType="fitXY"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_dimen_10dp"
+            android:src="@drawable/sc1" />
+
+        <TextView
+            android:id="@+id/market_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/head"
+            android:singleLine="true"
+            android:text="徐汇区港汇商场"
+            android:textSize="@dimen/common_font_26px" />
+
+        <TextView
+            android:id="@+id/market_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/market_name"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/head"
+            android:singleLine="true"
+            android:text="虹桥路港汇广场587号10B座一号楼"
+            android:textSize="@dimen/common_font_22px" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/market_address"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/head"
+            android:text="电话：021-88963321"
+            android:textColor="#ea9f9d"
+            android:textSize="@dimen/common_font_22px" />
+
+        <ImageView
+            android:id="@+id/iv_collect_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/phone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/vip_icon_p" />
+
+        <ImageView
+            android:id="@+id/iv_collect_treasure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/phone"
+            android:layout_marginRight="13dp"
+            android:layout_toLeftOf="@+id/iv_collect_vip"
+            android:src="@drawable/treasure_icon_p" />
+    </RelativeLayout>
+
+
+</LinearLayout>

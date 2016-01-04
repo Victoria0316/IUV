@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:widget="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:src="@drawable/piplogo1" />
+
+        <TextView
+            android:id="@+id/brand"
+            style="@style/common_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_toRightOf="@id/logo"
+            android:text="绿箭"
+
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="10dp">
+
+        <bluemobi.iuv.view.HorizontalListView
+            android:id="@+id/horizontalListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            widget:dividerWidth="10dp"
+            android:divider="@color/common_transparent"
+            >
+
+        </bluemobi.iuv.view.HorizontalListView>
+    </RelativeLayout>
+</LinearLayout>

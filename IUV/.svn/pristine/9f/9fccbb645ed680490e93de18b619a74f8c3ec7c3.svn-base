@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:id="@+id/jindianguangguang_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dianpubg"
+        android:padding="@dimen/common_dimen_5dp"
+        >
+        <ImageView
+            android:id="@+id/house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/house"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            />
+        <TextView
+            android:layout_below="@+id/house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进\n店\n逛\n逛"
+            android:textSize="@dimen/common_font_26px"
+            android:layout_marginTop="5dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:gravity="center"
+             />
+    </RelativeLayout>
+</LinearLayout>

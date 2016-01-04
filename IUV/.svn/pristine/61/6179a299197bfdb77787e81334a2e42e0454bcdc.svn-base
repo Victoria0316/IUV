@@ -1,0 +1,405 @@
+package bluemobi.iuv.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
+import bluemobi.iuv.R;
+import bluemobi.iuv.activity.MainActivity;
+import bluemobi.iuv.annotation.ContentView;
+import bluemobi.iuv.app.IuwApplication;
+import bluemobi.iuv.base.utils.Logger;
+import bluemobi.iuv.eventbus.BaseEvent;
+import bluemobi.iuv.eventbus.GoodEvent;
+import bluemobi.iuv.eventbus.StoreDetailsEvent;
+import bluemobi.iuv.network.IuwHttpJsonRequest;
+import bluemobi.iuv.network.request.BrandListRequest;
+import bluemobi.iuv.network.request.CollectShopRequest;
+import bluemobi.iuv.network.request.GivePraiseRequest;
+import bluemobi.iuv.network.request.HomeTreasureListRequest;
+import bluemobi.iuv.network.response.BrandListResponse;
+import bluemobi.iuv.network.response.GivePraiseResponse;
+import bluemobi.iuv.network.response.HomeTreasureListResponse;
+import bluemobi.iuv.util.Constants;
+import bluemobi.iuv.util.StringUtils;
+import bluemobi.iuv.util.Utils;
+import bluemobi.iuv.util.WebUtils;
+import bluemobi.iuv.view.CustomListView;
+import bluemobi.iuv.view.HorizontalListView;
+import bluemobi.iuv.view.LoadingPage;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
+
+/**
+ * P8_2_1品牌列表-大型百货-修改
+ * Created by wangzhijun on 2015/8/6. modify by liufy
+ */
+@ContentView(R.layout.fragment_brand_list)
+public class BrandListFragment extends BaseFragment {
+    @Bind(R.id.listView)
+    protected CustomListView listView;
+
+    @Bind(R.id.market_name)
+    protected TextView market_name;
+    /**
+     * 赞
+     */
+    @Bind(R.id.praise)
+    protected ImageView praise;
+    /**
+     * 收藏
+     */
+    @Bind(R.id.coll)
+    protected ImageView coll;
+    @Bind(R.id.praise_count)
+    protected TextView praise_count;
+
+
+    private int imageHeight;
+    private int imageWidth;
+    private int HorizontalHeight;
+    private String shopID;
+    private String shopName;
+    private String collectionId;
+    private String shopDistrictName;
+    private String collectionNum;
+    private String praiseId;
+    private String praiseNum;
+
+    private ArrayList<BrandListResponse.BrandListDto> info =null;
+
+    private  BrandListResponse.BrandListData data;
+
+    public BrandListFragment() {
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((MainActivity) mContext).setHomeBarSytle(shopDistrictName == null ? "" : shopDistrictName, true);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (((MainActivity) mContext).isHiddChange) {
+            ((MainActivity) mContext).setHomeBarSytle(shopDistrictName == null ? "" : shopDistrictName, true);
+        }
+    }
+
+    public void onEvent(BaseEvent baseEvent) {
+        if (baseEvent instanceof StoreDetailsEvent) {
+            StoreDetailsEvent storeDetailsEvent = (StoreDetailsEvent) baseEvent;
+            shopID = storeDetailsEvent.getShopID();
+            shopName = storeDetailsEvent.getShopName();
+            shopDistrictName = storeDetailsEvent.getShopDistrictName();
+            collectionId = storeDetailsEvent.getCollectionId();
+            collectionNum = storeDetailsEvent.getCollectionNum();
+            praiseId = storeDetailsEvent.getPraiseId();
+            praiseNum = storeDetailsEvent.getPraiseNum();
+        }
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        isShowLoadPage = false;
+        int deviceWidth = Utils.getDeviceWidth(getActivity());
+        imageWidth = (deviceWidth - Utils.dip2px(getActivity(), 44)) / 3;
+        imageHeight = imageWidth * 114 / 132;
+        HorizontalHeight = imageHeight;
+    }
+
+    @Override
+    protected IuwHttpJsonRequest initRequest() {
+        BrandListRequest request = new BrandListRequest
+                (
+                        new Response.Listener<BrandListResponse>() {
+                            @Override
+                            public void onResponse(BrandListResponse response) {
+                                Utils.closeDialog();
+                                data = response.data;
+                                wrapData(data);
+
+                            }
+                        }, (Response.ErrorListener) getActivity());
+        request.setShopsId(shopID);
+        request.setCurrentnum(Constants.CURRENTNUMBASE + "");
+        request.setCurrentpage(0 + "");
+        return request;
+    }
+
+    @Override
+    protected boolean getPage(int type) {
+        if (!super.getPage(type))
+            return false;
+        getDataServer();
+        return true;
+    }
+
+
+   private void getDataServer()
+   {
+       BrandListRequest request = new BrandListRequest
+               (
+                       new Response.Listener<BrandListResponse>() {
+                           @Override
+                           public void onResponse(BrandListResponse response) {
+                               Utils.closeDialog();
+                               data = response.data;
+                               wrapData(data);
+
+                           }
+                       }, (Response.ErrorListener) getActivity());
+       request.setShopsId(shopID);
+       request.setCurrentnum(Constants.CURRENTNUMBASE + "");
+       request.setCurrentpage(getCurPage() + "");
+       WebUtils.doPost(request);
+   }
+
+
+    private void wrapData(BrandListResponse.BrandListData data)
+    {
+        if (data==null)
+        {
+            return;
+        }
+        info = data.info;
+        if (info==null&&info.size()==0)
+        {
+            return;
+        }
+
+        TempAdapter adapter = new TempAdapter();
+        listView.setAdapter(adapter);
+
+
+    }
+
+
+    @Override
+    protected void successViewCompleted(View successView) {
+        ButterKnife.bind(this, successView);
+        market_name.setText(shopName);
+        praise_count.setText(praiseNum);
+        Logger.e("BrandListFragment");
+        if(StringUtils.isEmpty(collectionId)){
+            coll.setImageResource(R.drawable.collect_n);
+        }else {
+            coll.setImageResource(R.drawable.collect_p);
+        }
+        if(StringUtils.isEmpty(praiseId)){
+            praise.setImageResource(R.drawable.praise_n);
+            praise_count.setTextColor(getResources().getColor(R.color.common_gray));
+        }else {
+            praise.setImageResource(R.drawable.praise_p);
+            praise_count.setTextColor(getResources().getColor(R.color.common_blue));
+        }
+
+        praise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                praiseShop((ImageView) v, refreshPraiseShop);
+            }
+        });
+        coll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collectShop((ImageView) v, refreshCollectShop);
+            }
+        });
+
+    }
+
+
+
+
+    @OnClick(R.id.market_name)
+    public void onClickMarketName() {
+        ((MainActivity) mContext).isHiddChange = false;
+
+        // TODO: 2015/11/5
+        ((MainActivity)mContext).onBackPressed();
+    }
+
+
+    class TempAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return info.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_brand_list,
+                    parent, false);
+            HorizontalListView horizontalListView = (HorizontalListView) convertView.findViewById(R.id.horizontalListView);
+            horizontalListView.getLayoutParams().height = HorizontalHeight;
+            ImageView logo = (ImageView) convertView.findViewById(R.id.logo);
+            TextView brand = (TextView) convertView.findViewById(R.id.brand);
+            Glide.with(mContext).load(info.get(position).shopsImgPath).into(logo);
+            brand.setText(info.get(position).attributeValue);
+            ArrayList<BrandListResponse.ProductList> productList = info.get(position).productList;
+            if (productList!=null&&productList.size()>0)
+            {
+                HorizontalAdapter adapter = new HorizontalAdapter(productList);
+                horizontalListView.setAdapter(adapter);
+            }
+
+            return convertView;
+        }
+    }
+
+
+    class HorizontalAdapter extends BaseAdapter {
+
+        private ArrayList<BrandListResponse.ProductList> mProductList = null;
+
+        public HorizontalAdapter(ArrayList<BrandListResponse.ProductList> productList) {
+
+            this.mProductList = productList;
+
+        }
+
+        @Override
+        public int getCount() {
+            return mProductList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+
+            convertView = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_brand_good,
+                    parent, false);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(imageWidth,
+                    imageHeight);
+            convertView.setLayoutParams(params);
+            ImageView rl_pic = (ImageView) convertView.findViewById(R.id.rl_pic);
+            TextView style = (TextView) convertView.findViewById(R.id.style);
+            TextView name = (TextView) convertView.findViewById(R.id.name);
+            TextView price = (TextView) convertView.findViewById(R.id.price);
+            style.setText(mProductList.get(position).prodectNo);
+            name.setText(mProductList.get(position).productName);
+            String customerPrice = mProductList.get(position).customerPrice;
+            if (StringUtils.isEmpty(customerPrice))
+            {
+                price.setText("¥"+0.0);
+            }else
+            {
+                price.setText("¥"+customerPrice);
+            }
+
+            Glide.with(mContext).load(mProductList.get(position).productImgPath).into(rl_pic);
+
+            rl_pic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    GoodEvent goodEvent = new GoodEvent();
+                    goodEvent.setGoodId(mProductList.get(position).id);
+                    Utils.moveToFragment(BrandDetailFragment.class, BrandListFragment.this, "BrandDetailFragment");
+                    EventBus.getDefault().post(goodEvent);
+                }
+            });
+            return convertView;
+        }
+    }
+
+
+    public interface RefreshPraiseShopListener {
+        public void refreshView(ImageView mView);
+    }
+
+    RefreshPraiseShopListener refreshPraiseShop = new RefreshPraiseShopListener() {
+        @Override
+        public void refreshView(ImageView mv) {
+            mv.setImageResource(R.drawable.praise_p);
+            praise_count.setText(String.valueOf(Integer.valueOf(praise_count.getText().toString())+1));
+        }
+    };
+
+    private  void praiseShop (final ImageView praiseImage,final RefreshPraiseShopListener listener){
+        GivePraiseRequest request = new GivePraiseRequest(
+                new Response.Listener<GivePraiseResponse>() {
+                    @Override
+                    public void onResponse(GivePraiseResponse response) {
+                        Utils.closeDialog();
+                        if (response != null && response.getStatus() == 0) {
+                            listener.refreshView(praiseImage);
+                        }
+                    }
+                }, (Response.ErrorListener) mContext);
+        request.setId(shopID);
+        request.setUserId(IuwApplication.getInstance().getMyUserInfo().getUserId());
+        Utils.showProgressDialog(mContext);
+        WebUtils.doPost(request);
+    }
+
+
+    public interface RefreshCollectShopListener {
+        public void refreshView(ImageView mView);
+    }
+
+    RefreshCollectShopListener refreshCollectShop = new RefreshCollectShopListener() {
+        @Override
+        public void refreshView(ImageView mv) {
+            mv.setImageResource(R.drawable.collect_p);
+            Toast.makeText(mContext, "收藏成功", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private  void collectShop (final ImageView collectImage,final RefreshCollectShopListener listener){
+        CollectShopRequest request = new CollectShopRequest(
+                new Response.Listener<GivePraiseResponse>() {
+                    @Override
+                    public void onResponse(GivePraiseResponse response) {
+                        Utils.closeDialog();
+                        if (response != null && response.getStatus() == 0) {
+                            listener.refreshView(collectImage);
+                        }
+                    }
+                }, (Response.ErrorListener) mContext);
+        request.setId(shopID);
+        request.setUserId(IuwApplication.getInstance().getMyUserInfo().getUserId());
+        Utils.showProgressDialog(mContext);
+        WebUtils.doPost(request);
+    }
+
+
+
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/home_item_bg"
+    android:padding="@dimen/common_dimen_10dp"
+    android:layout_height="wrap_content">
+
+
+    <bluemobi.iuv.view.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_centerVertical="true"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/home_treasure_default_icon"
+        app:border_width="2dp"
+        app:border_color="#FFFFFF"/>
+
+<!--    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/circleImageView_width"
+        android:layout_height="@dimen/circleImageView_width"
+        android:src="@drawable/treasure_icon"
+        />-->
+
+    <RelativeLayout
+
+        android:layout_alignTop="@id/profile_image"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/common_dimen_10dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/profile_image"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/iv_treasure_icon"
+        android:id="@+id/relativeLayout">
+
+     <TextView
+         android:id="@+id/tv_home_title"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:singleLine="true"
+         android:textColor="@color/common_item_title"
+         android:textSize="@dimen/common_font_24px"
+         android:layout_marginBottom="@dimen/common_dimen_5dp"
+         android:text="SEG蓝色海洋之星水晶项链"/>
+
+        <TextView
+            android:id="@+id/tv_home_content"
+            android:layout_below="@id/tv_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/common_item_content"
+            android:layout_marginBottom="@dimen/common_dimen_5dp"
+            android:textSize="@dimen/common_font_22px"
+            android:text="西班牙IDEE蝴蝶饰品装饰项链女"/>
+
+        <TextView
+            android:layout_below="@id/tv_home_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/common_item_little"
+            android:textSize="@dimen/common_font_20px"
+            android:text="徐汇区虹桥路1号港汇恒隆广场1号"/>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_treasure_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/treasure_item_icon"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

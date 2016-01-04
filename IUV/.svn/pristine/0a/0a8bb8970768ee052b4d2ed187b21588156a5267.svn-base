@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?android:attr/actionBarSize"
+    android:background="@color/common_bg"
+    android:paddingLeft="@dimen/common_dimen_10dp"
+    android:paddingRight="@dimen/common_dimen_10dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_dimen_10dp"
+        android:layout_marginTop="@dimen/common_dimen_25dp"
+        android:hint="@string/Login_input_phone"
+        android:textSize="@dimen/common_font_24px"
+        android:textColorHint="@color/common_gray"
+        android:background="@drawable/common_input_bg"
+        android:inputType="number"
+        android:phoneNumber="true"
+        android:singleLine="true"
+        android:maxLength="11"
+        android:id="@+id/phone" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/common_dimen_10dp"
+            android:hint="@string/Login_input_verification"
+            android:textSize="@dimen/common_font_24px"
+            android:textColorHint="@color/common_gray"
+            android:background="@drawable/common_input_bg"
+            android:inputType="number"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:id="@+id/yanzhengma" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_verification_bg"
+            android:text="@string/obtain_verification"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/common_dimen_10dp"
+            android:id="@+id/getid" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_dimen_10dp"
+        android:layout_marginTop="@dimen/common_dimen_10dp"
+        android:hint="@string/Login_input_nickname"
+        android:textSize="@dimen/common_font_24px"
+        android:textColorHint="@color/common_gray"
+        android:background="@drawable/common_input_bg"
+        android:singleLine="true"
+        android:id="@+id/nickname" />
+
+
+
+    <Button
+        android:id="@+id/Registered"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_btnred_bg"
+        android:text="@string/Registered_title"
+        android:textSize="@dimen/common_font_30px"
+        android:textColor="@color/common_white"
+        android:layout_marginTop="@dimen/common_dimen_35dp" />
+
+</LinearLayout>

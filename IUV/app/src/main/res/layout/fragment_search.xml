@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:paddingTop="?android:attr/actionBarSize"
+    android:id="@+id/main"
+    >
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_transparent"
+        android:layout_marginBottom="@dimen/common_dimen_10dp"
+        android:layout_marginLeft="@dimen/common_dimen_10dp"
+        android:layout_marginRight="@dimen/common_dimen_10dp"
+        android:layout_marginTop="@dimen/common_dimen_20dp"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/common_dimen_10dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="@dimen/common_dimen_10dp" >
+    </GridView>
+
+</RelativeLayout>
+

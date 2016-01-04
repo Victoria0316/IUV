@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- P11_2我的收藏 商场-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@color/common_white"
+    android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/head"
+            android:layout_width="66dp"
+            android:layout_height="64dp"
+             android:scaleType="fitXY"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/sc1"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:id="@+id/market_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/head"
+            android:singleLine="true"
+            android:text="徐汇区港汇商场"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/market_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/market_name"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/head"
+            android:singleLine="true"
+            android:text="虹桥路港汇广场587号10B座一号楼"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/market_address"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/head"
+            android:text="电话：021-88963321"
+            android:textColor="#ea9f9d"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/iv_collect_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/phone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/vip_icon_p" />
+
+        <ImageView
+            android:id="@+id/iv_collect_treasure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_collect_vip"
+            android:layout_marginRight="13dp"
+            android:layout_toLeftOf="@+id/iv_collect_vip"
+            android:src="@drawable/treasure_icon_p" />
+    </RelativeLayout>
+
+
+</LinearLayout>
